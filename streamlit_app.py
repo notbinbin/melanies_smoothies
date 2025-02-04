@@ -1,5 +1,6 @@
 # Import python packages
 import streamlit as st
+import request
 import panda as pd
 from snowflake.snowpark.functions import col
 
@@ -55,7 +56,11 @@ if time_to_insert:
     session.sql(my_insert_stmt).collect()
     st.success('Your Smoothie is ordered!', icon="✅")
 
-
-import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
+
+if smoothiefroot_response.status_code == 200:
+    data = smoothiefroot_response.json()  # Convert response to JSON
+    sf_df = pd.DataFrame([data])  # Convert JSON to DataFrame
+    st.dataframe(sf_df)  # Display in Streamlit
+else:
+    st.error(f"API request failed with status code {smoothiefroot_response.status_code}")
