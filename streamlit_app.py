@@ -19,7 +19,7 @@ st.write(
 
 from snowflake.snowpark.functions import col
 
-cnx = st.connection("snowflake", type="snowflake",
+cnx = st.connection("snowflake",
                     account = "BMQLMVK-YI48100",
                     user = "gabalesvin",
                     password = "Gabales091698!",
