@@ -20,12 +20,12 @@ st.write(
 from snowflake.snowpark.functions import col
 
 cnx = st.connection("snowflake", type="snowflake",
-                    account = "BMQLMVK-YI48100"
-                    user = "gabalesvin"
-                    password = "Gabales091698!"
-                    role = "SYSADMIN"
-                    warehouse = "COMPUTE_WH"
-                    database = "SMOOTHIES"
+                    account = "BMQLMVK-YI48100",
+                    user = "gabalesvin",
+                    password = "Gabales091698!",
+                    role = "SYSADMIN",
+                    warehouse = "COMPUTE_WH",
+                    database = "SMOOTHIES",
                     schema = "PUBLIC")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
