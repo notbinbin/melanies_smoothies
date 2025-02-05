@@ -7,8 +7,7 @@ from snowflake.snowpark.functions import col
 # Write directly to the app
 st.title("Customize Your Smoothie! :cup_with_straw:")
 st.write(
-    """Replace this example with your own code!
-    **Choose the fruitsyou want in your custom Smoothie!.
+    """Choose the fruitsyou want in your custom Smoothie!.
     """
 )
 
@@ -29,6 +28,7 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 # st.dataframe(data=my_dataframe, use_container_width=True)
 # st.stop()
 pd_df=my_dataframe.to_pandas()
+st.dataframe(pd_df)
 st.stop()
 
 
